@@ -1,0 +1,18 @@
+# KEDA ScaledObject for GPU Workers
+# This allows the cluster to scale to zero GPUs when the queue is empty.
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gpu-worker-scaler
+  namespace: ai-platform
+spec:
+  scaleTargetRef:
+    name: gpu-worker-deployment
+  minReplicaCount: 0
+  maxReplicaCount: 10
+  triggers:
+  - type: redis
+    metadata:
+      address: redis:6379
+      listName: gpu_tasks
+      listLength: "5" # Scale up if more than 5 tasks are waiting
