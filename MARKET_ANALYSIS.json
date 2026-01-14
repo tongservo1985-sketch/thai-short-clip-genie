@@ -1,0 +1,30 @@
+{
+  "market_context": "Thailand",
+  "total_addressable_market": {
+    "creator_economy_size": "Estimated 15B+ THB",
+    "active_creators": "Approx. 2M users across TikTok, YouTube, and Facebook",
+    "growth_rate": "25% YoY"
+  },
+  "competitor_landscape": {
+    "global_players": [
+      {
+        "name": "OpusClip / Submagic",
+        "strengths": "High automation, global reach",
+        "weaknesses": "Poor Thai transcription accuracy, no support for Thai slang, generic font styles"
+      }
+    ],
+    "local_players": [
+      {
+        "name": "Manual Editors / Agencies",
+        "strengths": "High quality, culturally relevant",
+        "weaknesses": "Expensive (2,000-5,000 THB/clip), slow turnaround (24-48 hours)"
+      }
+    ]
+  },
+  "target_segments": [
+    "Educational Content Creators (Teachers, Coaches)",
+    "E-commerce Sellers (TikTok Shop Live Re-runs)",
+    "Entertainment/News Channels",
+    "SME Business Owners"
+  ]
+}
