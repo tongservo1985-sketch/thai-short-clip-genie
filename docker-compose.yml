@@ -1,44 +1,37 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: db
-    ports:
-      - "5432:5432"
-
   redis:
     image: redis:7-alpine
     ports:
       - "6379:6379"
 
   api:
-    build: .
-    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker # API uses same env but different CMD
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
     volumes:
-      - .:/app
-      - ./storage:/app/storage
+      - ./src:/app
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_URL=postgresql://user:pass@db:5432/db
-      - REDIS_URL=redis://redis:6379/0
     depends_on:
-      - db
       - redis
+    environment:
+      - REDIS_URL=redis://redis:6379/0
 
-  worker:
-    build: .
-    command: celery -A src.workers.tasks.celery_app worker --loglevel=info
-    volumes:
-      - .:/app
-      - ./storage:/app/storage
-    environment:
-      - DATABASE_URL=postgresql://user:pass@db:5432/db
-      - REDIS_URL=redis://redis:6379/0
+  gpu-worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     depends_on:
-      - db
       - redis
+    environment:
+      - REDIS_URL=redis://redis:6379/0
