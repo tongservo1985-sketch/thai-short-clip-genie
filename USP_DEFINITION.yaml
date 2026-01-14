@@ -1,0 +1,26 @@
+usp_id: TH_AI_CREATOR_001
+brand_positioning: "The Only AI that Truly Speaks Thai"
+
+core_values:
+  - linguistic_precision:
+      feature: "DeepThai™ STT Engine"
+      benefit: "98% accuracy in Thai dialects and urban slang, reducing manual editing by 90%."
+  - cultural_relevance:
+      feature: "Thai-Viral-Score (TVS)"
+      benefit: "Predicts video success based on Thai-specific trends (e.g., specific music patterns, humor styles)."
+  - localized_aesthetics:
+      feature: "Siam-Style Templates"
+      benefit: "One-click application of 'TikTok Thailand' aesthetic (fonts, emojis, and sound effects)."
+  - creator_economy_integration:
+      feature: "Smart Affiliate Tagger"
+      benefit: "Detects products in video and suggests Shopee/Lazada affiliate tags automatically."
+
+pricing_strategy:
+  - tier: "Free"
+    limit: "75 minutes/month (with watermark)"
+  - tier: "Pro (Creator)"
+    price: "499 THB/month"
+    benefit: "Unlimited exports, No watermark, AI Viral Scoring"
+  - tier: "Business"
+    price: "1,990 THB/month"
+    benefit: "Multiple seats, API access, Bulk processing"
